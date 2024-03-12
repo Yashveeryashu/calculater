@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculater</title>
+    <style>
+        body{
+            background: #000;
+        }
+        .outer{
+            width: 500px;
+            height:500px;
+            border:3px solid #28282B ;
+            margin:auto;
+            background:#28282B;
+        }
+        textarea{
+            margin: 7px;
+            width:95%;
+            height:30px;
+            font-size: 25px;
+            /* margin: auto; */
+            text-align: end;
+            
+        }
+        button{
+            width:60px;
+            height:60px;
+            margin:10px;
+            font-size: large;
+            font-weight: bold;
+            background:black;
+            color:white;
+        }
+        .special{
+            font-size: 20px;
+        }
+        .special2{
+            font-size:15px
+        }
+        .numbers{
+            border-radius: 50%;
+        }
+        .numbers2{
+            background: #f9c70c;
+        }
+        .numbers3{
+            background: lightskyblue;
+
+        }
+        .gst{
+            background: lightseagreen;
+        }
+
+    </style>
+</head>
+<body>
+    
+   <div class="outer">
+    <textarea rows="1" id="text" onload="solve()" name="result1" placeholder=""></textarea>
+    <div>
+       <button  class="numbers" onclick="myfun('7')">7</button>
+    <button  class="numbers" onclick="myfun('8')">8</button>
+    <button  class="numbers" onclick="myfun('9')">9</button>  
+    <button class="special numbers2" onclick="myfun('+')">+</button>
+    <button class="special2 numbers3" onclick="sinclick()" value="sin">sin</button>
+    <button onclick="square()">x<sup>2</sup></button>
+    </div>
+    <div>
+        <button   class="numbers" onclick="myfun('4')">4</button>
+        <button  class="numbers" onclick="myfun('5')">5</button>
+        <button  class="numbers" onclick="myfun('6')">6</button>
+        <button class="special numbers2" onclick="myfun('-')">-</button>
+        <button class="special2 numbers3" onclick="cosclick()">cos</button>
+        <button onclick="cube()">x<sup>3</sup></button>
+    </div>
+    <div>
+        <button  class="numbers" onclick="myfun('1')">1</button>
+        <button  class="numbers" onclick="myfun('2')">2</button>
+        <button  class="numbers" onclick="myfun('3')">3</button>
+        <button class="special numbers2" onclick="myfun('*')">x</button>
+        <button class="special2 numbers3" onclick="tanclick()" id="tan">tan</button>
+        <button onclick="squareRootclick()"><span>&#8730;</span></button>
+            
+       
+    </div>
+    <div>
+        <button class="numbers" onclick="myfun('0')">0</button>
+       
+         <button class="special2 numbers"  onclick="myfun('.')">.</button>
+         <button class="numbers2" onclick="calculate()">=</button>
+        <button class="numbers2"  onclick="myfun('/')">/</button>
+        <button class="special2" onclick="on_off()" style="background:darkred;" >clear</button>
+        <button onclick="per()">%</button>
+    </div>
+    <div>
+        <button onclick="gst()" class="gst">Gst</button>
+        <!-- <button onclick="mod('%')" >Mod</button> -->
+    </div>
+    <!-- <div>
+        <button onclick="mod()">mod</button>
+    </div> -->
+    
+   
+
+   </div>
+
+
+
+
+   <script>
+    let displayvalue=""
+    let displayafteroff=""
+    let newvalue=''
+
+    function myfun(value){
+        displayvalue+=value
+        document.getElementById("text").innerHTML=displayvalue
+
+    }
+    
+    function calculate(){
+
+        var x=eval(document.getElementById("text").innerHTML)
+        console.log(x)
+        document.getElementById("text").innerHTML=x
+
+        
+    }
+    function on_off(){
+        document.getElementById("text").innerHTML=displayafteroff
+        displayvalue=""
+        
+    }
+
+
+        function sinclick(){
+           document.getElementById("text").innerHTML=parseInt(Math.sin(document.getElementById("text").innerHTML))
+          
+        }
+        function cosclick(){
+           document.getElementById("text").innerHTML=Math.cos(document.getElementById("text").innerHTML)
+          
+        
+        }
+        function tanclick(){
+           document.getElementById("text").innerHTML=Math.tan(document.getElementById("text").innerHTML)
+          
+        }
+        function square(){
+            let a=document.getElementById("text").innerHTML
+            console.log(a)
+            let b= a*a
+            document.getElementById("text").innerHTML=b
+        }
+        function cube(){
+            var a = document.getElementById("text").innerHTML
+            var b = a*a*a
+            document.getElementById("text").innerHTML=b
+        }
+        function squareRootclick(){
+            var a = document.getElementById("text").innerHTML
+            var b = Math.sqrt(a)
+            document.getElementById("text").innerHTML=b
+        }
+      
+        function per(){
+            var a = document.getElementById("text").innerHTML
+            var b = a/100
+            document.getElementById("text").innerHTML=b
+        }
+
+
+        // function mod(value1){
+        //     displayvalue+=value1
+        //      document.getElementById("text").innerHTML=displayvalue
+        //      var a=document.getElementById("text").innerHTML
+        //     var c=document.getElementById("text").innerHTML.slice(str.indexOf('%') + 1)
+        //     var b = a%c
+        //     console.log(b)
+        //     // document.getElementById("text").innerHTML=b
+        // }
+
+        function gst(){
+            var a =document.getElementById("text").innerHTML
+            var b= a*(18/100)
+            document.getElementById("text").innerHTML=b
+        }
+       
+       
+        
+
+       
+
+    
+
+
+    
+    
+    
+    
+    </script>
+</body>
+</html>
